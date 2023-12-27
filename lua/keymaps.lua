@@ -26,6 +26,7 @@ map('n', '<C-a>', [[ <cmd>lua require('telescope.builtin').find_files()<cr> ]], 
 map('n', '<C-p>', [[ <cmd>lua require('telescope.builtin').buffers()<cr> ]], default_opts)
 map('n', '<C-g>', [[ <cmd>lua require('telescope.builtin').live_grep()<cr> ]], default_opts)
 
+-- lsp
 map('n', 'C-]', [[<cmd>lua vim.lsp.buf.definition()<cr>]], default_opts)
 map('n', 'gD', [[<cmd>lua vim.lsp.buf.declaration()<cr>]],default_opts)
 map('n', 'gd', [[<cmd>lua vim.lsp.buf.definition()<cr>]],default_opts)
@@ -39,6 +40,21 @@ map('n', '<space>wr', [[<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>]],def
 map('n', '<space>D', [[<cmd>lua vim.lsp.buf.type_definition()<cr>]],default_opts)
 map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename()<cr>]],default_opts)
 map('n', 'gr', [[<cmd>lua vim.lsp.buf.references()<cr>]],default_opts)
+
+-- dap
+map('n', '<F5>', [[<cmd>lua require('dap').continue() <cr>]], default_opts)
+map('n', '<F10>', [[<cmd>lua require('dap').step_over() <cr>]], default_opts)
+map('n', '<F11>', [[<cmd>lua require('dap').step_into() <cr>]], default_opts)
+map('n', '<F12>', [[<cmd>lua require('dap').step_out() <cr>]], default_opts)
+map('n', '<Leader>b', [[<cmd>lua require('dap').toggle_breakpoint() <cr>]], default_opts)
+map('n', '<Leader>B', [[<cmd>lua require('dap').set_breakpoint() <cr>]], default_opts)
+map('n', '<Leader>lp', [[<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) <cr>]], default_opts)
+map('n', '<Leader>dr', [[<cmd>lua require('dap').repl.open() <cr>]], default_opts)
+map('n', '<Leader>dl', [[<cmd>lua require('dap').run_last() <cr>]], default_opts)
+map('n', '<Leader>dh', [[<cmd>lua require('dap.ui.widgets').hover()<cr>]], default_opts)
+map('n', '<Leader>dp', [[<cmd>lua require('dap.ui.widgets').preview() <cr>]], default_opts)
+map('n', '<Leader>df', [[<cmd>lua local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) <cr>]], default_opts)
+map('n', '<Leader>ds', [[<cmd>lua local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) <cr>]], default_opts)
 
 -----------------------------------------------------------
 -- Фн. клавиши по F1 .. F12
