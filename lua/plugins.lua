@@ -18,12 +18,12 @@ return require('packer').startup(function()
   }
   --- Информационная строка внизу
   use { 'nvim-lualine/lualine.nvim',
-  requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  requires = {'nvim-tree/nvim-web-devicons', opt = true},
   config = function()
     require('lualine').setup()
   end, }
   -- Табы вверху
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons',
+  use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons',
   config = function()
     require("bufferline").setup{}
   end, }
