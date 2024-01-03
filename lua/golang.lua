@@ -32,3 +32,20 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = format_sync_grp,
 })
+
+local lspconfig = require'lspconfig'
+lspconfig.gopls.setup({
+  cmd = {"gopls", "serve"},
+  formatting = {
+    gofumpt = true,
+  },
+  settings = {
+    gopls =  {
+      buildFlags =  {"-tags=licensing,pdk"},
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = false,
+    }
+  }
+})
