@@ -18,15 +18,12 @@ return require('packer').startup(function()
   }
   --- Информационная строка внизу
   use { 'nvim-lualine/lualine.nvim',
-  requires = {'nvim-tree/nvim-web-devicons', opt = true},
-  config = function()
-    require('lualine').setup()
-  end, }
+    requires = {'nvim-tree/nvim-web-devicons', opt = true}
+  }
   -- Табы вверху
   use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons',
   config = function()
-    require("bufferline").setup{}
-  end, }
+      end, }
   -- Иконки расширений файлов
   use {
     'nvim-tree/nvim-web-devicons',
@@ -129,4 +126,5 @@ return require('packer').startup(function()
   use 'dense-analysis/ale'
   -- Дебаггер
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'theHamsta/nvim-dap-virtual-text'
 end)

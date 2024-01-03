@@ -129,8 +129,30 @@ require'nvim-tree'.setup({
   },
 })
 
+-- bufferline
+require("bufferline").setup({
+  options = {
+    numbers = "ordinal",
+    diagnostics = "nvim_lsp"
+  },
+})
+
+-- lualine
+require('lualine').setup({
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {{'filename', path=1}},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  }
+})
+
+
 -- dap
-vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', {text='🧘', texthl='', linehl='', numhl=''})
+require('dap.ext.vscode').load_launchjs(nil, {})
 
 -- nvim-cmp supports additional completion capabilities
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
