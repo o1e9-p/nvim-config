@@ -13,6 +13,8 @@ map('', '<right>', ':echoe "Use l"<CR>', {noremap = true, silent = false})
 -- Автоформат + сохранение по CTRL-s , как в нормальном, так и в insert режиме
 map('n', '<C-s>', ':Autoformat<CR>:w<CR>',  default_opts)
 map('i', '<C-s>', '<esc>:Autoformat<CR>:w<CR>', default_opts)
+-- Закрыть окно на q
+map('n', 'q', ':q<CR>',  default_opts)
 -- Переключение вкладок с помощью TAB или shift-tab (akinsho/bufferline.nvim)
 map('n', '<Tab>', ':BufferLineCycleNext<CR>', default_opts)
 map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', default_opts)
@@ -25,6 +27,7 @@ map('v', 't', '<Plug>(VTranslate)', {})
 map('n', '<C-a>', [[ <cmd>lua require('telescope.builtin').find_files()<cr> ]], default_opts)
 map('n', '<C-p>', [[ <cmd>lua require('telescope.builtin').buffers()<cr> ]], default_opts)
 map('n', '<C-g>', [[ <cmd>lua require('telescope.builtin').live_grep()<cr> ]], default_opts)
+map('n', '<C-gs>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
 
 -- lsp
 map('n', 'C-]', [[<cmd>lua vim.lsp.buf.definition()<cr>]], default_opts)
@@ -40,6 +43,8 @@ map('n', '<space>wr', [[<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>]],def
 map('n', '<space>D', [[<cmd>lua vim.lsp.buf.type_definition()<cr>]],default_opts)
 map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename()<cr>]],default_opts)
 map('n', 'gr', [[<cmd>lua vim.lsp.buf.references()<cr>]],default_opts)
+map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', default_opts)
+map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', default_opts)
 
 -- dap
 map('n', '<F5>', [[<cmd>lua require('dap').continue() <cr>]], default_opts)
@@ -70,11 +75,11 @@ map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.
 -- <S-F3> Открыть всю nvim конфигурацию для редактирования
 map('n', '<S-F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <F4> Поиск слова под курсором
-map('n', '<F4>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
+-- map('n', '<F4>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
 -- <S-F4> Поиск слова в модальном окошке
 map('n', '<S-F4>', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
 -- <F5> разные вариации нумераций строк, можно переключаться
-map('n', '<F5>', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
+-- map('n', '<F5>', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
 -- <F6> дерево файлов.
 map('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>', default_opts)
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar

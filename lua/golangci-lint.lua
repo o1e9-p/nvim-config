@@ -15,5 +15,5 @@ if not configs.golangcilsp then
 	}
 end
 lspconfig.golangcilsp.setup {
-	filetypes = {'go'}
+	filetypes = {'go', 'gomod'}
 }

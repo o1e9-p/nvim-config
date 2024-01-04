@@ -55,25 +55,65 @@ return require('packer').startup(function()
 
 
   -- Highlight, edit, and navigate code using a fast incremental parsing library
-  use 'nvim-treesitter/nvim-treesitter'
+  -- Treesitter
+    use("nvim-treesitter/nvim-treesitter", {
+        run = ":TSUpdate"
+    })
+    use("romgrk/nvim-treesitter-context")
+    use({
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end
+    })
+
   -- Collection of configurations for built-in LSP client
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/mason.nvim'
+  -- use 'neovim/nvim-lspconfig'
+  -- use 'williamboman/mason.nvim'
   -- Автодополнялка
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'saadparwaiz1/cmp_luasnip'
+  -- use 'hrsh7th/nvim-cmp'
+  -- use 'hrsh7th/cmp-nvim-lsp'
+  -- use 'hrsh7th/cmp-buffer'
+  -- use 'saadparwaiz1/cmp_luasnip'
   --- Автодополнлялка к файловой системе
-  use 'hrsh7th/cmp-path'
+  -- use 'hrsh7th/cmp-path'
   -- Snippets plugin
-  use 'L3MON4D3/LuaSnip'
+  -- use 'L3MON4D3/LuaSnip'
+  
+  use({
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    })
+
+    use("ray-x/lsp_signature.nvim")
+    use({
+        "j-hui/fidget.nvim",
+        tag = 'legacy',
+    })
 
   -----------------------------------------------------------
   -- GOLANG
   -----------------------------------------------------------
 
-  use 'ray-x/go.nvim'
+  -- use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommended if need floating window support
 
   use {'crispgm/nvim-go', require = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
@@ -127,4 +167,8 @@ return require('packer').startup(function()
   -- Дебаггер
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use 'theHamsta/nvim-dap-virtual-text'
+  -- линия на курсоре и подсветка слов
+  use 'yamatsum/nvim-cursorline'
 end)
+
+ 

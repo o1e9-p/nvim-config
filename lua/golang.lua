@@ -1,12 +1,12 @@
 local golang_opts = {
   auto_format = true,
   -- linters: revive, errcheck, staticcheck, golangci-lint
-  linter = 'golangci_lint',
+  -- linter = 'golangci_lint',
   auto_lint = false,
   -- qf or vt
   lint_prompt_style = 'qf',
   -- formatter =  ['gofumpt', 'goimports', 'gofmt'],
-  formatter =  'goimports',
+  -- formatter =  'goimports',
   test_flags = {'-v'},
   test_timeout = '30s',
   test_env = {},
@@ -33,19 +33,23 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
+-- autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)
+
 local lspconfig = require'lspconfig'
 lspconfig.gopls.setup({
-  cmd = {"gopls", "serve"},
-  formatting = {
-    gofumpt = true,
-  },
+  cmd = {"gopls"},
+  -- formatting = {
+  --   gofumpt = true,
+  -- },
   settings = {
     gopls =  {
-      buildFlags =  {"-tags=licensing,pdk"},
       analyses = {
         unusedparams = true,
+        shadow = true
       },
-      staticcheck = false,
+      staticcheck = true,
     }
   }
 })
+--
+-- vim.lsp.set_log_level("debug")
