@@ -14,6 +14,22 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+	vim.keymap.set('n', 'C-]', function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end,opts)
+	vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end,opts)
+	vim.keymap.set('n', 'gI', function() vim.lsp.buf.incoming_calls() end,opts)
+	vim.keymap.set('n', 'gO', function() vim.lsp.buf.outgoing_calls() end,opts)
+	vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end,opts)
+	vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end,opts)
+	vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.signature_help() end,opts)
+	vim.keymap.set('n', '<space>wa', function() vim.lsp.buf.add_workspace_folder() end,opts)
+	vim.keymap.set('n', '<space>wr', function() vim.lsp.buf.remove_workspace_folder() end,opts)
+	vim.keymap.set('n', '<space>D', function() vim.lsp.buf.type_definition() end,opts)
+	vim.keymap.set('n', '<space>rn', function() vim.lsp.buf.rename() end,opts)
+	vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end,opts)
+
+	vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_prev() end, opts)
+	vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_next() end, opts)
 end)
 
 require('mason').setup({})
@@ -35,7 +51,7 @@ require('mason-lspconfig').setup({
 		  	root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
 			  init_options = {
 					-- command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
-				  command = { "golangci-lint", "run","--enable-all", "--out-format", "json" };
+				  command = { "golangci-lint", "run","--enable-all", "--disable", "varnamelen,nosnakecase,nonamedreturns,wrapcheck", "--out-format", "json" };
 			  },
         filetypes = {'go', 'gomod'},
       })
@@ -65,30 +81,20 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm({select = true}),
     ['<CR>'] = cmp.mapping.confirm({select = false})
   }),
 })
 
+local opts = { noremap=true, silent=true }
 
--- local lspconfig = require 'lspconfig'
--- local configs = require 'lspconfig.configs'
---
--- if not configs.golangcilsp then
---  	configs.golangcilsp = {
--- 		default_config = {
--- 			cmd = {'golangci-lint-langserver'},
--- 			root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
--- 			init_options = {
--- 					-- command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
--- 					command = { "golangci-lint", "run","--enable-all", "--out-format", "json" };
--- 			}
--- 		};
--- 	}
--- end
--- lspconfig.golangcilsp.setup {
--- 	filetypes = {'go', 'gomod'}
--- }
+local function quickfix()
+    vim.lsp.buf.code_action({
+        filter = function(a) return a.isPreferred end,
+        apply = true
+    })
+end
+
+vim.keymap.set('n', '<leader>fq', quickfix, opts)
 
 lsp.setup()
 
