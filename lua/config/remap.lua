@@ -35,8 +35,6 @@ vim.keymap.set('v', 't', '<Plug>(VTranslate)', {})
 
 -- По F1 очищаем последний поиск с подсветкой
 vim.keymap.set('n', '<F1>', ':nohl<CR>')
--- <F6> дерево файлов.
-vim.keymap.set('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>')
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
 vim.keymap.set('n', '<F8>', ':TagbarToggle<CR>')
 -- show open files list
@@ -46,7 +44,5 @@ vim.keymap.set('n', '<leader>o', 'o<Esc>')
 vim.keymap.set('n', '<leader>O', 'O<Esc>')
 -- close all windows except current focused
 vim.keymap.set('n', '<Esc><Esc>', ':only<CR>')
--- close current tab
-vim.keymap.set('n', 'bd', ':bd<CR>lua require"bufferline".go_to(num)<CR>')
 
 vim.keymap.set('n', 'pn', 'o<Esc>p')

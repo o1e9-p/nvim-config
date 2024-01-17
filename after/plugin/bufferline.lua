@@ -8,6 +8,9 @@ require("bufferline").setup({
 vim.keymap.set('n', '<right>', ':BufferLineCycleNext<CR>')
 vim.keymap.set('n', '<left>', ':BufferLineCyclePrev<CR>')
 
+-- close current tab
+vim.keymap.set('n', 'bd', ':bd<CR>lua require"bufferline".go_to(num)<CR>')
+
 -- go to tab (Not working)
 vim.keymap.set('n', ' 1', ':BufferLineGoToBuffer 1<CR>')
 vim.keymap.set('n', ' 2', ':BufferLineGoToBuffer 2<CR>')
