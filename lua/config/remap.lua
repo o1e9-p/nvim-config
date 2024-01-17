@@ -24,12 +24,9 @@ vim.keymap.set('n', '<C-s>', '<CR>:w<CR>')
 vim.keymap.set('i', '<C-s>', '<esc>:<CR>:w<CR>')
 -- Закрыть окно на q
 vim.keymap.set('n', 'q', ':q<CR>')
--- Переключение вкладок с помощью TAB или shift-tab (akinsho/bufferline.nvim)
-vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>')
-vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>')
 -- Пролистнуть на страницу вниз / вверх (как в браузерах)
-vim.keymap.set('n', '<Space>', '<PageDown> zz')
-vim.keymap.set('n', '<C-Space>', '<PageUp> zz')
+vim.keymap.set('n', '<down>', '<PageDown> zz')
+vim.keymap.set('n', '<up>', '<PageUp> zz')
 -- " Переводчик рус -> eng
 vim.keymap.set('v', 't', '<Plug>(VTranslate)', {})
 
