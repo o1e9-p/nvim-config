@@ -8,10 +8,11 @@ local function my_on_attach(bufnr)
   -- default mappings
   api.config.mappings.default_on_attach(bufnr)
 
-  -- <F6> дерево файлов.
-  vim.keymap.set('n', '<Tab>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>')
   vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
   vim.keymap.set('n', '?',     api.tree.toggle_help, opts('Help'))
+
+  -- <F6> дерево файлов.
+  vim.keymap.set('n', '<silent><Tab>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>')
 end
 
 
@@ -44,5 +45,17 @@ require'nvim-tree'.setup({
   filters = {
     -- dotfiles = true,
   },
+  update_focused_file = {
+    enable = true,
+    update_cwd = false,
+  },
   on_attach = my_on_attach,
+  diagnostics = {
+    enable = true,
+  },
+  actions= {
+    open_file = {
+      quit_on_open = true,
+    },
+  }
 })

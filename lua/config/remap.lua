@@ -30,10 +30,12 @@ vim.keymap.set('n', '<up>', '<PageUp> zz')
 -- " Переводчик рус -> eng
 vim.keymap.set('v', 't', '<Plug>(VTranslate)', {})
 
+-- <F6> дерево файлов.
+vim.keymap.set('n', '<Tab>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>')
 -- По F1 очищаем последний поиск с подсветкой
 vim.keymap.set('n', '<F1>', ':nohl<CR>')
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
-vim.keymap.set('n', '<F8>', ':TagbarToggle<CR>')
+vim.keymap.set('n', '<silent><F8>', ':TagbarToggle<CR>')
 -- show open files list
 vim.keymap.set('n', 'tb', ':Telescope buffers<CR><Esc>')
 -- add empty line

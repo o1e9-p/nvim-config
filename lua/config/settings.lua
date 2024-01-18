@@ -47,3 +47,5 @@ opt.smartindent = true    -- autoindent new lines
 -- don't auto commenting new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
+-- When opening a file or bookmark, don't change to its directory.
+g.startify_change_to_dir = 0
