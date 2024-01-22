@@ -109,4 +109,6 @@ return require('packer').startup(function(use)
   use 'yamatsum/nvim-cursorline'
   -- Закрывает автоматом скобки
   use 'cohama/lexima.vim'
+  -- git annotations
+  use 'tveskag/nvim-blame-line'
 end)

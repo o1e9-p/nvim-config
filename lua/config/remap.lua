@@ -45,3 +45,5 @@ vim.keymap.set('n', '<leader>O', 'O<Esc>')
 vim.keymap.set('n', '<Esc><Esc>', ':only<CR>')
 
 vim.keymap.set('n', 'pn', 'o<Esc>p')
+
+vim.keymap.set('n', '<leader>b', ':ToggleBlameLine<CR>')
