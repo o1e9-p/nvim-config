@@ -10,6 +10,9 @@ vim.keymap.set('x', '<leader>p', "\"_dp")
 -- simple replacing
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- search word under coursor
+vim.keymap.set("n", "<leader>/", [[/<C-r><C-w><CR>]])
+
 -- Системный буфер обмена shift - Y
 vim.keymap.set('v', 'S-Y', '"+y', {})
 -- Типа 'Нажимает' на ESC при быстром нажатии jj, чтобы не тянутся
