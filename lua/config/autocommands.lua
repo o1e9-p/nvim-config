@@ -21,3 +21,4 @@ autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", ti
 augroup end
 ]], false)
 
+-- vim.cmd [[autocmd BufEnter * EnableBlameLine]]
