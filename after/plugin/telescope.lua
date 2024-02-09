@@ -7,3 +7,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
+-- show open files list
+vim.keymap.set('n', 'tb', ':Telescope buffers<CR><Esc>')
+
+vim.keymap.set('n', 'bd', ':bd<CR>')

@@ -39,8 +39,6 @@ vim.keymap.set('n', '<Tab>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>')
 vim.keymap.set('n', '<F1>', ':nohl<CR>')
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
 vim.keymap.set('n', '<silent><F8>', ':TagbarToggle<CR>')
--- show open files list
-vim.keymap.set('n', 'tb', ':Telescope buffers<CR><Esc>')
 -- add empty line
 vim.keymap.set('n', '<leader>o', 'o<Esc>')
 vim.keymap.set('n', '<leader>O', 'O<Esc>')
