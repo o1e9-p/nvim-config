@@ -25,8 +25,9 @@ opt.hlsearch = true                 -- Подсветка поиска
 opt.incsearch = true                -- Подсчет найденных
 opt.scrolloff = 8
 opt.signcolumn = "yes"
-opt.updatetime = 50 
+opt.updatetime = 50
 
+cmd[[set clipboard+=unnamedplus]]
 -- g.mapleader = " "
 -----------------------------------------------------------
 -- Цветовая схема

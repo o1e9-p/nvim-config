@@ -28,8 +28,8 @@ vim.keymap.set('i', '<C-s>', '<esc>:<CR>:w<CR>')
 -- Закрыть окно на q
 vim.keymap.set('n', 'q', ':q<CR>')
 -- Пролистнуть на страницу вниз / вверх (как в браузерах)
-vim.keymap.set('n', '<down>', '<PageDown> zz')
-vim.keymap.set('n', '<up>', '<PageUp> zz')
+vim.keymap.set('n', '<down>', '30j')
+vim.keymap.set('n', '<up>', '30k')
 -- " Переводчик рус -> eng
 vim.keymap.set('v', 't', '<Plug>(VTranslate)', {})
 

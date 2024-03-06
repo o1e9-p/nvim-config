@@ -44,9 +44,9 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------
   -- LSP и автодополнялка
   -----------------------------------------------------------
- 
-  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
+  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -76,8 +76,8 @@ return require('packer').startup(function(use)
     },
   }
   -- Навигация внутри файла по классам и функциям
-  use 'majutsushi/tagbar'   
-  
+  use 'majutsushi/tagbar'
+
   -----------------------------------------------------------
   -- РАЗНОЕ
   -----------------------------------------------------------
@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
   -- ]p - вставить на строку выше, [p - ниже
   use 'tpope/vim-unimpaired'
   -- Переводчик рус - англ
-  use 'skanehira/translate.vim'
+  use 'voldikss/vim-translator'
   --- popup окошки
   use 'nvim-lua/popup.nvim'
   -- Стартовая страница, если просто набрать vim в консоле
@@ -111,4 +111,7 @@ return require('packer').startup(function(use)
   use 'cohama/lexima.vim'
   -- git annotations
   use 'tveskag/nvim-blame-line'
+  -- git
+  use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
 end)

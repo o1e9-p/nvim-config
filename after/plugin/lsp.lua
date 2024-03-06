@@ -28,8 +28,6 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set('n', '<space>rn', function() vim.lsp.buf.rename() end,opts)
 	vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end,opts)
 
-	vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_prev() end, opts)
-	vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_next() end, opts)
 end)
 
 require('mason').setup({})
