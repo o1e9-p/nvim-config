@@ -35,7 +35,7 @@ require('gitsigns').setup {
     style = 'minimal',
     relative = 'cursor',
     row = 0,
-    col = 0
+    col = 1
   },
   yadm = {
     enable = false
