@@ -1,4 +1,4 @@
 require("config.remap")
-require("config.packer")
+require("config.packercfg")
 require("config.autocommands")
 require("config.settings")

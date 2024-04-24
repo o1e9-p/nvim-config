@@ -26,6 +26,8 @@ opt.incsearch = true                -- Подсчет найденных
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.updatetime = 50
+opt.foldenable = false
+opt.foldmethod = "indent"
 
 cmd[[set clipboard+=unnamedplus]]
 -- g.mapleader = " "
