@@ -41,15 +41,19 @@ vim.keymap.set('n', '<F1>', ':nohl<CR>')
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
 vim.keymap.set('n', '<silent><F8>', ':TagbarToggle<CR>')
 -- add empty line
-vim.keymap.set('n', '<space>o', 'o<Esc>')
-vim.keymap.set('n', '<space>O', 'O<Esc>')
+vim.keymap.set('n', '<leader>o', 'o<Esc>')
+vim.keymap.set('n', '<leader>O', 'O<Esc>')
 
 -- close all windows except current focused
 vim.keymap.set('n', '<Esc><Esc>', ':only<CR>')
 
 vim.keymap.set('n', 'pn', 'o<Esc>p')
 
+-- who have written string
 vim.keymap.set('n', '<leader>b', ':ToggleBlameLine<CR>')
 
 vim.keymap.set('n', '+', '<cmd>foldopen<CR>')
 vim.keymap.set('n', '-', '<cmd>foldclose<CR>')
+
+-- close without saving
+vim.keymap.set('n', 'Q', ':q!<CR>')

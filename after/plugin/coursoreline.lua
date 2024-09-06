@@ -1,7 +1,7 @@
 require('nvim-cursorline').setup {
   cursorline = {
     enable = true,
-    timeout = 500,
+    timeout = 100,
     number = false,
   },
   cursorword = {
