@@ -32,7 +32,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'gopls', 'golangci_lint_ls', 'jq'},
+  ensure_installed = {'gopls', 'golangci_lint_ls'},
   handlers = {
     lsp.default_setup,
 
