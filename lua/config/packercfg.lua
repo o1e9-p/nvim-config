@@ -87,6 +87,36 @@ return require('packer').startup(function(use)
   use 'ray-x/guihua.lua' -- recommended if need floating window support
 
   -----------------------------------------------------------
+  -- Дебаггер
+  -----------------------------------------------------------
+  use {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require('dap')
+    end
+  }
+
+  use {
+    "leoluz/nvim-dap-go",
+    config = function()
+      require('dap-go').setup()
+    end
+  }
+
+ use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+
+  use {
+    "theHamsta/nvim-dap-virtual-text",
+    requires = {"mfussenegger/nvim-dap"},
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end
+  }
+
+  use 'Weissle/persistent-breakpoints.nvim'
+
+
+  -----------------------------------------------------------
   -- РАЗНОЕ
   -----------------------------------------------------------
   -- Даже если включена русская раскладка vim команды будут работать
@@ -104,11 +134,6 @@ return require('packer').startup(function(use)
   config = function() require('Comment').setup() end }
   -- Линтер, работает для всех языков
   -- use 'dense-analysis/ale'
-  -- Дебаггер
-  use { "rcarriga/nvim-dap-ui", requires = {{"mfussenegger/nvim-dap"}, { "nvim-neotest/nvim-nio" }} }
-  use 'theHamsta/nvim-dap-virtual-text'
-  use 'leoluz/nvim-dap-go'
-  use 'Weissle/persistent-breakpoints.nvim'
   -- линия на курсоре и подсветка слов
   use 'yamatsum/nvim-cursorline'
   -- Закрывает автоматом скобки

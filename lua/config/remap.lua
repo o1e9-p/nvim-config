@@ -50,7 +50,7 @@ vim.keymap.set('n', '<Esc><Esc>', ':only<CR>')
 vim.keymap.set('n', 'pn', 'o<Esc>p')
 
 -- who have written string
-vim.keymap.set('n', '<leader>b', ':ToggleBlameLine<CR>')
+vim.keymap.set('n', 'bl', ':ToggleBlameLine<CR>')
 
 vim.keymap.set('n', '+', '<cmd>foldopen<CR>')
 vim.keymap.set('n', '-', '<cmd>foldclose<CR>')
