@@ -1,5 +1,5 @@
 local lsp  = require('lsp-zero')
-lsp.preset('recomended')
+lsp.extend_lspconfig()
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
@@ -33,6 +33,7 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {'gopls', 'golangci_lint_ls'},
+  automatic_installation = true,
   handlers = {
     lsp.default_setup,
 
@@ -48,9 +49,14 @@ require('mason-lspconfig').setup({
         cmd = {'golangci-lint-langserver'},
 		  	root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
 			  init_options = {
-					command = { "golangci-lint", "run",  "--out-format", "json" };
-				  -- command = { "golangci-lint", "run","--enable-all", "--disable", "varnamelen,nosnakecase,nonamedreturns,wrapcheck", "--out-format", "json" };
-			  },
+            command = {
+                  "golangci-lint",
+                  "run",
+                  "--output.json.path", "stdout",
+                  "--show-stats=false",
+                  "--issues-exit-code=1"
+            }
+        },
         filetypes = {'go', 'gomod'},
       })
     end,
