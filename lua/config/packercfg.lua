@@ -65,6 +65,22 @@ return require('packer').startup(function(use)
     }
   }
 
+  ------------------------------------------------------------
+  -- AI
+  ------------------------------------------------------------
+
+  -- Copilot
+
+  use {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    requires = {
+      { 'github/copilot.vim' }, -- или 'zbirenbaum/copilot.lua'
+      { 'nvim-lua/plenary.nvim' }
+    },
+    run = 'make tiktoken' -- Только для macOS или Linux
+  }
+
+
   -----------------------------------------------------------
   -- НАВИГАЦИЯ
   -----------------------------------------------------------
