@@ -3,6 +3,27 @@ local dap_go = require('dap-go')
 
 dap_go.setup()
 
+-- JavaScript/TypeScript
+local dap_vscode = require('dap-vscode-js')
+dap_vscode.setup({
+  node_path = 'node',
+  debugger_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/vscode-js-debug',
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }
+})
+
+for _, language in ipairs({'typescript', 'javascript', 'typescriptreact', 'javascriptreact'}) do
+  dap.configurations[language] = {
+    {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch file',
+      program = '${file}',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true
+    }
+  }
+end
+
 -- Настройка для отображения UI (опционально)
 local dapui = require("dapui")
 dapui.setup()
