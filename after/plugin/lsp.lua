@@ -34,7 +34,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'gopls', 'golangci_lint_ls',
-    'tsserver', 'eslint'
+    'ts_ls', 'eslint'
   },
   automatic_installation = true,
   handlers = {
