@@ -1,5 +1,3 @@
-local json = require("lunajson")
-
 local function load_launch_json()
   local file_path = vim.fn.getcwd() .. "/.vscode/launch.json"
   local file = io.open(file_path, "r")
@@ -12,7 +10,7 @@ local function load_launch_json()
   local content = file:read("*a")
   file:close()
 
-  local ok, parsed = pcall(json.decode, content)
+  local ok, parsed = pcall(vim.fn.json_decode, content)
   if not ok then
     print("Error parsing launch.json: " .. parsed)
     return
