@@ -14,9 +14,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>/", [[/<C-r><C-w><CR>]])
 
 -- Системный буфер обмена shift - Y
--- vim.keymap.set('v', 'S-Y', '"+y', {})
--- Типа 'Нажимает' на ESC при быстром нажатии jj, чтобы не тянутся
--- vim.keymap.set('i', 'jj', '<Esc>')
+vim.keymap.set('v', '<C-C>', '"+y')
 -- Стрелочки откл. Использовать hjkl
 vim.keymap.set('', '<up>', ':echoe "Use k"<CR>')
 vim.keymap.set('', '<down>', ':echoe "Use j"<CR>')

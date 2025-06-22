@@ -24,9 +24,33 @@ for _, language in ipairs({'typescript', 'javascript', 'typescriptreact', 'javas
   }
 end
 
+dap.adapters.go = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = 'dlv',
+    args    = {'dap', '-l', '127.0.0.1:${port}', '--log', '--log-output=dap'},
+  },
+}
+
+require('dap.ext.vscode').load_launchjs(nil, { go = { "go" } })
+
 -- Настройка для отображения UI (опционально)
 local dapui = require("dapui")
-dapui.setup()
+dapui.setup({
+  layouts = {
+    {
+      elements = { 'scopes', 'breakpoints', 'stacks', 'watches' },
+      size     = 40,
+      position = 'left',
+    },
+    {
+      elements = { 'repl', 'console' },
+      size     = 10,
+      position = 'bottom',
+    },
+  },
+})
 
 -- Автоматическое открытие UI при запуске/завершении сессии
 dap.listeners.after.event_initialized["dapui_config"] = function()

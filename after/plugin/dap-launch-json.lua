@@ -28,7 +28,8 @@ local function load_launch_json()
         program = config.program,
         env = config.env,
         args = config.args,
-        dlvToolPath = config.dlvToolPath or "dlv"
+        dlvToolPath = config.dlvToolPath or "dlv",
+        outputMode = "remote"
       })
     end
   end
@@ -37,5 +38,5 @@ local function load_launch_json()
 end
 
 -- Автозагрузка конфигурации при старте
-load_launch_json()
+-- load_launch_json()
 
