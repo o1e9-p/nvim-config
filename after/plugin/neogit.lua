@@ -22,3 +22,7 @@ map('n', '<leader>gc', ':Neogit commit<CR>', opts)
 -- открыть обзор конфликтов (через diffview)
 map('n', '<leader>gd', ':DiffviewOpen<CR>', opts)
 
+-- сразу индексировать все изменения
+vim.api.nvim_set_keymap('n', '<leader>ga', ':Neogit stage_modifications<CR>', { noremap = true, silent = true })
+
+
