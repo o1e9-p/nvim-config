@@ -143,6 +143,31 @@ return require('packer').startup(function(use)
 
   use 'Weissle/persistent-breakpoints.nvim'
 
+  -----------------------------------------------------------
+  -- GIT
+  -----------------------------------------------------------
+  -- обязательно для neogit и diffview
+  use 'nvim-lua/plenary.nvim'
+
+  -- подключаем Neogit и грузим наши настройки
+  use {
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+
+  -- (опционально) визуальный просмотр diffs/конфликтов
+  use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+
+    -- git annotations
+  use 'tveskag/nvim-blame-line'
+  -- git
+  use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
+
+
 
   -----------------------------------------------------------
   -- РАЗНОЕ
@@ -165,7 +190,7 @@ return require('packer').startup(function(use)
   -- линия на курсоре и подсветка слов
   use 'yamatsum/nvim-cursorline'
   -- Закрывает автоматом скобки
-  use 'cohama/lexima.vim'
+  -- use 'cohama/lexima.vim'
   -- Auto close and rename HTML tags
   use {
     'windwp/nvim-ts-autotag',
@@ -173,9 +198,4 @@ return require('packer').startup(function(use)
       require('nvim-ts-autotag').setup()
     end
   }
-  -- git annotations
-  use 'tveskag/nvim-blame-line'
-  -- git
-  use 'tpope/vim-fugitive'
-  use 'lewis6991/gitsigns.nvim'
 end)

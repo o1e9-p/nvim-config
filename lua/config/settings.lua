@@ -13,7 +13,8 @@ g.tagbar_sort = 0
 -----------------------------------------------------------
 opt.colorcolumn = '120'              -- Разделитель на 120 символов
 opt.cursorline = true               -- Подсветка строки с курсором
-opt.spelllang= { 'en_us', 'ru' }    -- Словари рус eng
+opt.spell = true                  -- Включаем проверку орфографии
+opt.spelllang = 'en,ru'      -- Языки проверки орфографии
 opt.number = true                   -- Включаем нумерацию строк
 opt.relativenumber = true           -- Вкл. относительную нумерацию строк
 opt.so=999                          -- Курсор всегда в центре экрана
@@ -29,6 +30,8 @@ opt.foldenable = false
 opt.foldmethod = "indent"
 
 cmd[[set clipboard+=unnamedplus]]
+
+
 -- g.mapleader = " "
 -----------------------------------------------------------
 -- Цветовая схема
