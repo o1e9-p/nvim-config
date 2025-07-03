@@ -23,6 +23,9 @@ map('n', '<leader>gc', ':Neogit commit<CR>', opts)
 map('n', '<leader>gd', ':DiffviewOpen<CR>', opts)
 
 -- сразу индексировать все изменения
-vim.api.nvim_set_keymap('n', '<leader>ga', ':Neogit stage_modifications<CR>', { noremap = true, silent = true })
+map('n', '<leader>ga', ':Neogit stage_modifications<CR>', { noremap = true, silent = true })
+
+-- пушить в удалёнку
+map('n', '<leader>gp', ':Neogit push<CR>', opts)
 
 

@@ -2,6 +2,7 @@ local copilot_chat = require("CopilotChat")
 
 copilot_chat.setup({
   model = "claude-sonnet-4",
+  context = {"buffer", "git:staged"},
   debug = false,
   show_help = true,
   prompts = {
