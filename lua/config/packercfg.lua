@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
   -- LSP и автодополнялка
   -----------------------------------------------------------
 
-  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/nvim-treesitter-context'
 
   use {

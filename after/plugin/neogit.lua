@@ -1,14 +1,16 @@
-local neogit = require('neogit')
+local ok, neogit = pcall(require, 'neogit')
+if not ok then
+  return
+end
 
 neogit.setup {
-  -- автоматически обновлять статус при возврате в буфер
-  auto_refresh = true,
-  -- не спрашивать подтверждение при коммите
-  disable_commit_confirmation = true,
   -- интеграция с diffview (нужно установить diffview.nvim)
   integrations = { diffview = true },
-  -- открывать Neogit не в табе, а в split’е
+  -- открывать Neogit не в табе, а в split'е
   kind = 'split',
+  -- отключаем per-project settings (вызывает ошибку с vim.uv.cwd())
+  use_per_project_settings = false,
+  remember_settings = false,
 }
 
 -- Маппинги
