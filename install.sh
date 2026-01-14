@@ -308,7 +308,17 @@ install_go() {
 
     log_info "Installing Go..."
 
-    local go_version="1.23.4"
+    # Fetch latest Go version from golang.org
+    local go_version=""
+    go_version=$(curl -sL 'https://go.dev/VERSION?m=text' | head -1 | sed 's/go//')
+
+    if [ -z "$go_version" ]; then
+        log_warn "Could not fetch latest Go version, using fallback 1.23.4"
+        go_version="1.23.4"
+    fi
+
+    log_info "Latest Go version: $go_version"
+
     local go_url=""
     local install_dir=""
 
