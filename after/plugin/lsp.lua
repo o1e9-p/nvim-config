@@ -1,4 +1,8 @@
-local lsp  = require('lsp-zero')
+local ok_lsp, lsp = pcall(require, 'lsp-zero')
+if not ok_lsp then
+  return
+end
+
 lsp.extend_lspconfig()
 
 lsp.on_attach(function(client, bufnr)
@@ -30,57 +34,73 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'gopls', 'golangci_lint_ls',
-    'ts_ls', 'eslint'
-  },
-  automatic_installation = true,
-  handlers = {
-    lsp.default_setup,
+local ok_mason, mason = pcall(require, 'mason')
+if ok_mason then
+  mason.setup({})
+end
 
-    lua_ls = function()
-      local lua_opts = lsp.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end,
+local ok_mason_lsp, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if ok_mason_lsp then
+  -- Wrap setup in pcall to handle version incompatibilities
+  local setup_ok, setup_err = pcall(function()
+    mason_lspconfig.setup({
+      ensure_installed = {
+        'gopls', 'golangci_lint_ls',
+        'ts_ls', 'eslint'
+      },
+      handlers = {
+        lsp.default_setup,
 
-    golangci_lint_ls = function()
-      local lspconfig = require 'lspconfig'
+        lua_ls = function()
+          local lua_opts = lsp.nvim_lua_ls()
+          require('lspconfig').lua_ls.setup(lua_opts)
+        end,
 
-      lspconfig.golangci_lint_ls.setup({
-        cmd = {'golangci-lint-langserver'},
-		  	root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
-			  init_options = {
-            command = {
-                  "golangci-lint",
-                  "run",
-                  "--output.json.path", "stdout",
-                  "--show-stats=false",
-                  "--issues-exit-code=1"
+        golangci_lint_ls = function()
+          local lspconfig = require 'lspconfig'
+          lspconfig.golangci_lint_ls.setup({
+            cmd = {'golangci-lint-langserver'},
+            root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+            init_options = {
+              command = {
+                "golangci-lint",
+                "run",
+                "--output.json.path", "stdout",
+                "--show-stats=false",
+                "--issues-exit-code=1"
+              }
+            },
+            filetypes = {'go', 'gomod'},
+          })
+        end,
+
+        tsserver = function()
+          require('lspconfig').tsserver.setup({})
+        end,
+
+        eslint = function()
+          local lspconfig = require 'lspconfig'
+          lspconfig.eslint.setup({
+            settings = {
+              packageManager = 'npm'
             }
-        },
-        filetypes = {'go', 'gomod'},
-      })
-    end,
+          })
+        end,
+      }
+    })
+  end)
 
-    tsserver = function()
-      require('lspconfig').tsserver.setup({})
-    end,
+  if not setup_ok then
+    vim.notify("mason-lspconfig setup error (may need plugin update): " .. tostring(setup_err), vim.log.levels.WARN)
+  end
+end
 
-    eslint = function()
-      local lspconfig = require 'lspconfig'
-      lspconfig.eslint.setup({
-        settings = {
-          packageManager = 'npm'
-        }
-      })
-    end,
+local ok_cmp, cmp = pcall(require, 'cmp')
+if not ok_cmp then
+  lsp.setup()
+  return
+end
 
-  }
-})
-
-local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
